@@ -15,18 +15,21 @@
 </head>
 <body>
 
-    <?php 
-        $name = "Notes from Underground";
-        $read = true;
+    <h1>Recommended Books</h1>
 
-        if($read) {
-            $message = "You have read $name";
-        } else {
-            $message = "You have not read $name";
-        }
+    <?php
+        $books = [
+            "Notes from Underground",
+            "Crimes and Punishment",
+            "The Brothers Karamazov",
+        ];
     ?>
 
-    <h1><?= $message ?></h1>
+    <ul>
+        <?php foreach ($books as $book) : ?>
+            <li><?= $book ?></li>
+        <?php endforeach; ?>
+    </ul>
         
 </body>
 </html>

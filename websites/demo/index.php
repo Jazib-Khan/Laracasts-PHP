@@ -34,23 +34,28 @@
             ],
         ];
 
-        function filterByAuthor($books, $author) {
+        // function filter($items, $fn) {
 
-            $filteredBooks = [];
+        //     $filteredItems = [];
 
-            foreach ($books as $book) {
-                if ($book['author'] === $author) {
-                    $filteredBooks[] = $book;
-                }
-            }
+        //     foreach ($items as $item) {
+        //         if ($fn($item)) {
+        //             $filteredItems[] = $item;
+        //         }
+        //     }
 
-            return $filteredBooks;
-        }
+        //     return $filteredItems;
+        // }
+
+
+        $filteredBooks = array_filter($books, function ($book) {
+            return $book['author'] === 'Fyodor Dostoevsky';
+        });
 
     ?>
 
-    <ul>
-        <?php foreach (filterByAuthor($books, 'Fyodor Dostoevsky') as $book) : ?>
+    <ul> 
+        <?php foreach ($filteredBooks as $book) : ?>
             <li>
                 <a href="<?= $book['url']; ?>" >
                     <?= $book['name']; ?> (<?= $book['year']; ?>) - By <?= $book['author']; ?>

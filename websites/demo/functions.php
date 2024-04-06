@@ -12,3 +12,9 @@ function dd($value) {
 function urlIs($value) {
     return $_SERVER['REQUEST_URI'] === $value ? 'bg-gray-900 text-white' : 'text-gray-300';
 }
+
+function authorize($condition, $statusCode = Response::FORBIDDEN) {
+    if (! $condition) {
+        abort($statusCode);
+    }
+}

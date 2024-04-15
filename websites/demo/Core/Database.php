@@ -1,6 +1,10 @@
 <?php
 
-    class Database {
+namespace Core;
+
+use PDO;
+
+class Database {
 
     public $connection;
 

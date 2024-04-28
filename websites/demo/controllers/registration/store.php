@@ -4,6 +4,8 @@ use Core\Validator;
 use Core\Database;
 use Core\App;
 
+$db = App::resolve(Database::class);
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -23,8 +25,6 @@ if (!empty($errors)) {
     ]);
     exit;
 }
-
-$db = App::resolve(Database::class);
 
 // Check if the account already exists
 $user = $db->query('SELECT * FROM users WHERE email = :email', [
@@ -46,9 +46,9 @@ if ($user) {
         'password' => password_hash($password, PASSWORD_DEFAULT)
     ]);
 
-    $_SESSION['user'] = [
+    login([
         'email' => $email
-    ];
+    ]);
 
     header('location: /');
     exit();

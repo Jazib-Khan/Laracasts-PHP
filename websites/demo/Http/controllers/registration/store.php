@@ -1,6 +1,7 @@
 <?php
 
 use Core\Validator;
+use Core\Authenticator;
 use Core\Database;
 use Core\App;
 
@@ -46,9 +47,7 @@ if ($user) {
         'password' => password_hash($password, PASSWORD_DEFAULT)
     ]);
 
-    login([
-        'email' => $email
-    ]);
+    (new Authenticator)->login(['email' => $email]);
 
     header('location: /');
     exit();
